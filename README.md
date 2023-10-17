@@ -4,5 +4,6 @@ My favorite thingsto HODL
 
 ## Deployed
 
-https://vercel.com/jsahagun91/spot-price-btc-gold/7hdebFJAAxRuewojBYsWxVpGW3iZ
+https://spot-price-btc-gold.vercel.app/
+
 
