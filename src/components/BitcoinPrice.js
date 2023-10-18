@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function BitcoinPrice() {
     const [bitcoinPrice, setBitcoinPrice] = useState(null);
-
+    
     useEffect(() => {
         axios
             .get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')

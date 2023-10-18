@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function GoldPrice() {
+
+    // const apiKey = process.env.REACT_APP_GOLD_API_KEY;
     const [goldPrice, setGoldPrice] = useState(null);
+
+    
   
       useEffect(() => {
 
