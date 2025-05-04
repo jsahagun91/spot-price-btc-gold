@@ -2,21 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function BitcoinPrice() {
-    const [bitcoinPrice, setBitcoinPrice] = useState(null);
-    
+    const [price, setPrice] = useState(null);
+
     useEffect(() => {
-        axios
-            .get('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')
-            .then((response) => {
-                // Remove commas from the string then convert it to a number
-                let priceWithoutCommas = response.data.bpi.USD.rate.replace(/,/g, '');
-                let roundedPrice = parseFloat(priceWithoutCommas).toFixed(2);
-                // Convert back to string and add commas
-                setBitcoinPrice(parseFloat(roundedPrice).toLocaleString('en-US', {minimumFractionDigits: 2}));
+        axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+            .then(response => {
+                const btcPrice = response.data.bitcoin.usd;
+                setPrice(btcPrice.toLocaleString('en-US', { minimumFractionDigits: 2 }));
+            })
+            .catch(error => {
+                console.error('Error fetching price:', error);
             });
     }, []);
 
-    return <div class="btc-card">&#x20BF; Bitcoin: ${bitcoinPrice}</div>;
+    return <div className="btc-card">₿ Bitcoin: ${price}</div>;
 }
 
 export default BitcoinPrice;
